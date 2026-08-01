@@ -9,4 +9,4 @@ class Solution(object):
         if len(s)==0:
             return 0
         else:
-            return len(s[-1]) 
+            return len(s[-1])
