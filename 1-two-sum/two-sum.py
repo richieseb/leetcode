@@ -5,7 +5,12 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        for i in range(len(nums)):
-            for j in range(i+1,len(nums)):
-                if target==nums[i]+nums[j]:
-                    return i,j
+        d={}
+        for i, value in enumerate(nums):
+            num=target-value
+            if num in d:
+                return [d[num],i]
+            else:
+                d[value]=i
+        return []
+                               
