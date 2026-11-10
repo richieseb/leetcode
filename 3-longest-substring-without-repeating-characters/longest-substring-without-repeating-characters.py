@@ -4,13 +4,14 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        char_index_map = {}
-        max_len = 0
-        left = 0
-        for right, char in enumerate(s):
-            if char in char_index_map and char_index_map[char] >= left:
-                left = char_index_map[char] + 1
-            char_index_map[char] = right
-            max_len = max(max_len, right - left + 1)
-            
+        start=0
+        end=0
+        max_len=0
+        d={}
+        while end<len(s):
+            if s[end] in d and d[s[end]]>=start:
+                start=d[s[end]]+1
+            max_len=max(max_len,end-start+1)
+            d[s[end]]=end
+            end+=1
         return max_len
