@@ -5,13 +5,13 @@ class Solution(object):
         :rtype: int
         """
         start=0
-        end=0
-        max_len=0
-        d={}
-        while end<len(s):
-            if s[end] in d and d[s[end]]>=start:
-                start=d[s[end]]+1
-            max_len=max(max_len,end-start+1)
-            d[s[end]]=end
-            end+=1
-        return max_len
+        best=0
+        seen=set()
+        for i in range(len(s)):
+            while s[i] in seen:
+                seen.remove(s[start])
+                start+=1
+            seen.add(s[i])
+            best=max(best,i-start+1)
+        return best
+            
